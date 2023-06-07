@@ -10,14 +10,13 @@ export function calcDistance3D(x1, y1, z1, x2, y2, z2) {
 }
 
 /**
- * 计算空间中点到线的最短距离
+ * 计算空间中点到线的投影向量
  * @param { Array } point 给定点的坐标 [1, 2, 3]
  * @param { Array } line_start 直线的起点 [0, 0, 0]
  * @param { Array } line_end 终点 [1, 1, 1]
- * @param { Number } decimal 结果的小数位数
- * @return { Number }
+ * @returns { Array } 投影向量
  */
-export function pointToLineDistance(point, line_start, line_end, decimal = 2) {
+export function pointToLineProjection(point, line_start, line_end) {
     // 将直线表示为向量 v
     const v = line_end.map((coord, i) => coord - line_start[i]);
 
@@ -29,11 +28,41 @@ export function pointToLineDistance(point, line_start, line_end, decimal = 2) {
     const dot_product_wv = w.reduce((acc, coord, i) => acc + coord * v[i], 0);
     const scalar = dot_product_wv / length_v_squared;
     const p = v.map(coord => coord * scalar);
+    return p
+}
+
+/**
+ * 计算空间中点到线的最短距离
+ * @param { Array } point 给定点的坐标 [1, 2, 3]
+ * @param { Array } line_start 直线的起点 [0, 0, 0]
+ * @param { Array } line_end 终点 [1, 1, 1]
+ * @param { Number } decimal 结果的小数位数
+ * @return { Number }
+ */
+export function pointToLineDistance(point, line_start, line_end, decimal = 2) {
+    
+    const p = pointToLineProjection(point, line_start, line_end);
 
     // 计算投影向量的长度并输出结果
     const distance = Math.sqrt(p.reduce((acc, coord) => acc + coord ** 2, 0));
     
     return distance.toFixed(decimal)
+}
+
+/**
+ * 计算空间中点投影到线上的点的坐标
+ * @param { Array } point 给定点的坐标 [1, 2, 3]
+ * @param { Array } line_start 直线的起点 [0, 0, 0]
+ * @param { Array } line_end 终点 [1, 1, 1]
+ * @param { Number } decimal 结果的小数位数
+ * @return { Array }
+ */
+ export function ProjectionPointOfLine(point, line_start, line_end, decimal = 2) {
+    const p = pointToLineProjection(point, line_start, line_end);
+
+    const projectionPoint = line_start.map((coord, i) => coord + p[i]);
+
+    return projectionPoint
 }
 
 /**
