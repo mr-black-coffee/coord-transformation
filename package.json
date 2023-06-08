@@ -1,6 +1,6 @@
 {
     "name": "coord-transformation",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "A coordinate transformation tool for 3D system.",
     "main": "./dist/index.js",
     "scripts": {

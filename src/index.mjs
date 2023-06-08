@@ -76,7 +76,7 @@ export class CoordTransformer{
      */
     static pointToLineDistance(point, line_start, line_end, decimal = 2) {
         
-        const p = pointToLineProjection(point, line_start, line_end);
+        const p = CoordTransformer.pointToLineProjection(point, line_start, line_end);
 
         // 计算投影向量的长度并输出结果
         const distance = Math.sqrt(p.reduce((acc, coord) => acc + coord ** 2, 0));
@@ -93,7 +93,7 @@ export class CoordTransformer{
      * @return { Array }
      */
     static ProjectionPointOfLine(point, line_start, line_end, decimal = 2) {
-        const p = pointToLineProjection(point, line_start, line_end);
+        const p = CoordTransformer.pointToLineProjection(point, line_start, line_end);
 
         const projectionPoint = line_start.map((coord, i) => coord + p[i]);
 
