@@ -4,7 +4,7 @@ function log(msg) {
     globalThis?.console?.log(msg)
 }
 
-export class coordTransformer{
+export class CoordTransformer{
     #transformationMatrix
     constructor(sourcePoints, targetPoints) {
         if (!sourcePoints || !targetPoints || !Array.sourcePoints || !Array.isArray(targetPoints)) {
@@ -123,6 +123,4 @@ export class coordTransformer{
     }
 }
 
-
-
-export default coordTransformer
+export default CoordTransformer
