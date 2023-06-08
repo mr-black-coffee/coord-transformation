@@ -7,11 +7,11 @@ function log(msg) {
 export class CoordTransformer{
     #transformationMatrix
     constructor(sourcePoints, targetPoints) {
-        if (!sourcePoints || !targetPoints || !Array.sourcePoints || !Array.isArray(targetPoints)) {
+        if (!sourcePoints || !targetPoints || !Array.isArray(sourcePoints) || !Array.isArray(targetPoints)) {
             log('请传入形如[[point1_x, point1_y,point1_z], [point1_x, point1_y,point1_z]]的坐标列表')
             return
         }
-        this.#transformationMatrix = coordTransformer.generateTransformationMatrix(sourcePoints, targetPoints)
+        this.#transformationMatrix = CoordTransformer.generateTransformationMatrix(sourcePoints, targetPoints)
     }
 
     /**
