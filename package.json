@@ -1,6 +1,6 @@
 {
     "name": "coord-transformation",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A coordinate transformation tool for 3D system.",
     "main": "./dist/index.js",
     "scripts": {
@@ -30,5 +30,9 @@
     },
     "devDependencies": {
         "webpack-cli": "^4.10.0"
-    }
+    },
+    "files": [
+        "dist",
+        "src"
+    ]
 }
